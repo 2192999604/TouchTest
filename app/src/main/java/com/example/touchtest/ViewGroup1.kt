@@ -19,7 +19,7 @@ class ViewGroup1 @JvmOverloads constructor(context: Context, attributes: Attribu
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         Log.d(MainActivity.LOG_TAG, "ViewGroup1 dispatchTouchEvent executed && ev type is ${ev?.action}") // 即使在日志中也不能随便调用super的上一级方法，会干扰的
-        return super.dispatchTouchEvent(ev) // 假如这里为false，最开始打log的竟然是View1
+        return true // true的话，会自行消费？和onTouchEvent不同，要区分开来
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {

@@ -27,13 +27,15 @@ open class View1 @JvmOverloads constructor(context: Context, attributeSet: Attri
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         Log.d(MainActivity.LOG_TAG, "View1 onTouchEvent executed && ev type is ${event?.action}")
 //        parent.requestDisallowInterceptTouchEvent(true)
-        return true // 这里假如为false, 也不会执行点击事件（前提是不设置setOnTouchListener）
+//        performClick() // 需要加这一行才可以执行点击呢，需要根据ev的action来判断，不能执行多次
+        return false
     }
 
     // 为什么不加这行，会报警告？
     override fun performClick(): Boolean {
+        super.performClick()
         Log.d(MainActivity.LOG_TAG, "View1 performClick executed")
-        return false
+        return true
     }
 
 
